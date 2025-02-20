@@ -1,7 +1,14 @@
 <?php
+  session_start();
   include 'conn.php';
   $sql = "SELECT * FROM users";
   $result = $conn->query($sql);
+
+  if (isset($_SESSION['username'])) {
+    echo 'Welcome ' . $_SESSION['username'] . ". You are logged in. <a href='logout.php'>Logout</a>";
+  } else {
+    echo 'You are not logged in. Please login first at <a href="login.php">Login</a>';
+  }
 ?>
 
 <!DOCTYPE html>

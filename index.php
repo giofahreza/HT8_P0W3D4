@@ -1,5 +1,10 @@
 <?php
   session_start();
+
+  if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+  }
+
   include 'conn.php';
   $sql = "SELECT * FROM users";
   $result = $conn->query($sql);
@@ -19,19 +24,7 @@
   <title>Document</title>
 </head>
 <body>
-  <!-- <form action="process.php" method="get"> -->
-  <form action="process.php" method="post">
-    <input type="text" name="username" placeholder="Enter your username"><br>
-    <input type="password" name="password" placeholder="Enter your password"><br>
-    <button type="submit">Submit</button>
-  </form>
-
-  <?php
-    echo 'something';
-  ?>
-  <?php echo 'bigthink'; ?>
-  <?= 'anything' ?>
-
+  <h1>Dashboard</h1>
   <table>
     <tr>
       <th>Username</th>
